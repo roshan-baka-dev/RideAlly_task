@@ -1,0 +1,12 @@
+#logo {
+  transition: all 0.3s ease;
+  /* height: 40px; */
+}
+
+.sticky-active #logo {
+  height: 32px;
+}
+
+#navbar-inner {
+  transition: padding-bottom 0.3s ease;
+}
