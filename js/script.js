@@ -38,14 +38,37 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function showSlide(newIndex) {
       slides.forEach((slide, idx) => {
+         
+        const textContainer = slide.querySelector('.text-container');
+        const outerBox = slide.querySelector('.outer-box');
         if (idx === newIndex) {
           
           slide.classList.remove('opacity-0', 'z-10');
           slide.classList.add('opacity-100', 'z-20');
+
+          if (textContainer) {
+            // Reset to trigger transition
+            textContainer.classList.remove('-translate-x-1/4', 'opacity-0', 'duration-100');
+            textContainer.classList.add('translate-x-0', 'opacity-100', 'duration-700');
+          }
+          if (outerBox) {
+            outerBox.classList.remove('w-0');
+            outerBox.classList.add('w-full'); // or `w-[700px]` for fixed
+          }
+
         } else {
           
           slide.classList.remove('opacity-100', 'z-20');
           slide.classList.add('opacity-0', 'z-10');
+
+          if (textContainer) {
+            textContainer.classList.remove('translate-x-0', 'opacity-100', 'duration-700');
+            textContainer.classList.add('-translate-x-1/4', 'opacity-0', 'duration-100');
+          }
+          if (outerBox) {
+            outerBox.classList.remove('w-full');
+            outerBox.classList.add('w-0');
+          }
         }
       });
     }
